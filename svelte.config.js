@@ -10,7 +10,8 @@ const config = {
       fallback: '404.html'
     }),
     paths: {
-      base: '/moire'
+      base: '',
+      relative: true
     },
     alias: {
       $theme: './src/theme',
