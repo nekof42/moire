@@ -5,7 +5,7 @@
   <br/>
   <h1>Moire</h1>
   <p>
-    Sync your thoughts from Apple Notes by Shortcuts.
+    Sync your thoughts from Apple Notes to GitHub Pages by Shortcuts.
   </p>
   <p>
     <a href="https://moire.blog">Moire</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="https://docs.moire.blog">Docs</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="https://themes.moire.blog">Themes</a>
@@ -23,7 +23,7 @@ Moire is a tool designed to seamlessly synchronize your thoughts from Apple Note
 ## Features
 
 - **Seamless Sync**: Direct integration with Apple Notes via Shortcuts.
-- **Minimalist Design**: Clean, focused interface for reading.
+- **Markdown Export**: Convert your notes to Markdown format. Easy to migrate.
 - **Theme Support**: Customizable themes (e.g., Receipt, Pixel).
 
 ## Development
