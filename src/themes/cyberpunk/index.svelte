@@ -107,6 +107,7 @@
     {#each memoList.visibleMemos as memo}
       <article
         class="group relative pl-6 border-l-2 border-[var(--text-color)]/20 hover:border-[var(--accent-color)] transition-colors duration-300"
+        id={memo.slug}
       >
         <div
           class="absolute -left-[5px] top-0 w-[8px] h-[8px] bg-[var(--bg-color)] border border-[var(--text-color)] group-hover:bg-[var(--accent-color)] group-hover:border-[var(--accent-color)] transition-colors"

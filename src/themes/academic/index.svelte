@@ -65,7 +65,7 @@
 
           <div class="space-y-14">
             {#each memos as memo}
-              <article class="group relative">
+              <article class="group relative" id={memo.slug}>
                 <div class="absolute -left-20 top-2 hidden xl:block text-xs font-bold tracking-widest text-[var(--text-color)]/30 w-12 text-right uppercase">
                   {format(memo.date, 'HH:mm')}
                 </div>

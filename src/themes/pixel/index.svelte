@@ -59,6 +59,7 @@
     {#each memoList.visibleMemos as memo}
       <article
         class="window-frame relative flex flex-col bg-[var(--card-bg)] border-2 border-[var(--border-color)] shadow-[4px_4px_0_0_var(--accent-color)] hover:translate-y-[-2px] hover:shadow-[6px_6px_0_0_var(--accent-color)] transition-all duration-200 rounded-xl overflow-hidden"
+        id={memo.slug}
       >
         <div
           class="flex items-center justify-between border-b-2 border-[var(--border-color)] bg-[var(--bg-color)] px-3 py-2 text-xs"

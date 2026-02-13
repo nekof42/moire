@@ -53,7 +53,7 @@
           </div>
 
           {#each memos as memo}
-            <div class="flex gap-3 mb-4 items-start">
+            <div class="flex gap-3 mb-4 items-start" id={memo.slug}>
               <div class="flex flex-col items-center gap-1 w-10 shrink-0 mt-4">
                 <div class="w-8 h-8 bg-black rounded-full overflow-hidden">
                   <img

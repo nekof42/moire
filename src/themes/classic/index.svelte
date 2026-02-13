@@ -9,17 +9,17 @@
 
 <div class="min-h-screen bg-white text-[0.95rem] {config.theme}">
   <div class="max-w-2xl mx-auto">
-    <header class="bg-white px-8 pt-12 pb-6">
+    <header class="bg-white px-6 pt-12 pb-6 md:pb-12">
       <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
         <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4">
-          <h1 class="text-3xl font-bold tracking-tight text-gray-900 leading-tight">{config.title}</h1>
-          <p class="text-sm text-gray-500">{config.description}</p>
+          <h1 class="text-3xl font-bold tracking-tight text-gray-900">{config.title}</h1>
+          <p class="text-sm text-gray-500 italic">{config.description}</p>
         </div>
 
         <div class="flex items-center gap-3 self-end md:self-auto">
           {#if memoList.selectedTag}
             <button 
-              class="px-3 py-1  bg-gray-100 rounded-full text-[0.8rem] font-medium hover:bg-gray-200 transition-colors"
+              class="px-2 py-1 cursor-pointer bg-gray-50 rounded-full text-[0.8rem] font-medium hover:bg-gray-100 transition-colors"
               style="color: var(--accent-color)"
               onclick={() => memoList.selectTag(null)}
             >
@@ -32,8 +32,8 @@
 
     <div class="divide-y divide-gray-100">
       {#each memoList.visibleMemos as memo}
-        <article class="px-8 py-10 transition-colors hover:bg-gray-50/30">
-          <div class="text-[0.8rem] font-medium text-gray-400 mb-2">{format(memo.date, 'MMMM d, yyyy')}</div>
+        <article class="p-6" id={memo.slug}>
+          <div class="text-[0.75rem] font-400 text-gray-500 mb-2">{format(memo.date, 'MMMM d, yyyy')}</div>
           <div 
             class=" leading-[1.8] text-gray-800
               [&_h1]:text-xl [&_h1]:font-bold [&_h1]:text-gray-900 [&_h1]:mt-6 [&_h1]:mb-3 [&_h1]:leading-tight
@@ -51,7 +51,7 @@
               [&_code]:text-[0.8rem] [&_code]:bg-gray-100 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded-md [&_code]:text-gray-800 [&_code]:font-mono
               [&_pre]:bg-gray-50 [&_pre]:p-4 [&_pre]:rounded-xl [&_pre]:text-[0.8rem] [&_pre]:overflow-x-auto [&_pre]:my-4 [&_pre]:border [&_pre]:border-gray-100
               [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-gray-800
-              [&_.tag-link]:text-[0.8rem] [&_.tag-link]:mr-1 [&_.tag-link]:no-underline [&_.tag-link]:cursor-pointer [&_.tag-link]:font-medium
+              [&_.tag-link]:text-[0.85rem] [&_.tag-link]:mr-1 [&_.tag-link]:no-underline [&_.tag-link]:cursor-pointer [&_.tag-link]:font-medium
             "
             style="
               --link-color: var(--accent-color);
