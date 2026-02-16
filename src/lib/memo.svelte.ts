@@ -40,6 +40,7 @@ export function createMemoList(getData: () => any, config: any) {
 
     function selectTag(tag: string | null) {
         selectedTag = selectedTag === tag ? null : tag;
+      visibleCount = config.pageSize || 20;
     }
 
     return {

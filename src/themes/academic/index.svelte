@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { slide } from 'svelte/transition';
   import {format} from 'date-fns';
   import type {PageData} from '../../routes/$types';
   import {createMemoList} from '$lib/memo.svelte';
@@ -6,6 +7,12 @@
 
   let {data, config}: {data: PageData; config: any} = $props();
   const memoList = createMemoList(() => data, config);
+
+  $effect(() => {
+    if (memoList.selectedTag) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
 </script>
 
 <div class="max-w-4xl mx-auto min-h-screen text-[var(--text-color)] p-5 md:p-10 {config.theme} relative isolate">
@@ -65,8 +72,8 @@
     </aside>
 
     <main class="md:col-span-9 space-y-16 max-w-2xl">
-      {#each Object.entries(memoList.groupedMemos) as [dateKey, memos]}
-        <section>
+      {#each Object.entries(memoList.groupedMemos) as [dateKey, memos] (dateKey)}
+        <section in:slide>
           <div class="flex items-baseline gap-4 mb-10 border-b border-[var(--text-color)] pb-3">
             <h2 class="text-3xl font-black italic text-[var(--text-color)] tracking-tight">
               {format(new Date(dateKey + 'T00:00:00'), 'MMMM dd, yyyy')}
@@ -77,8 +84,9 @@
           </div>
 
           <div class="space-y-14">
-            {#each memos as memo}
+            {#each memos as memo (memo.slug)}
               <article
+                in:slide
                 class="group relative"
                 id={memo.slug}
               >
@@ -102,7 +110,7 @@
                         [&_a]:text-[var(--accent-color)] [&_a]:no-underline [&_a]:border-b [&_a]:border-[var(--accent-color)]/30 [&_a]:underline-offset-4 [&_a]:hover:border-[var(--accent-color)] [&_a]:hover:bg-[var(--accent-color)]/5 [&_a]:transition-all
                         [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5
                         [&_p]:my-4
-                        [&_table]:border-collapse [&_table]:border-y-1 [&_table]:border-black [&_table]:my-6 [&_table]:w-full [&_table]:text-sm
+                        [&_table]:border-collapse [&_table]:border-y-1 [&_table]:border-black [&_table]:my-6 [&_table]:w-full [&_table]:text-xs
                         [&_th]:border-b-1 [&_th]:border-black [&_th]:border-dashed [&_th]:font-bold [&_th]:p-3 [&_th]:text-center [&_th]:uppercase
                         [&_td]:border-b [&_td]:border-[var(--text-color)]/10 [&_td]:border-dashed [&_td]:p-3 [&_td]:text-center
                         [&_blockquote]:border-l-4 [&_blockquote]:italic [&_blockquote]:border-[var(--accent-color)] [&_blockquote]:bg-[var(--accent-color)]/5 [&_blockquote_p]:py-3 [&_blockquote]:px-4 [&_blockquote]:my-4 [&_blockquote]:not-italic [&_blockquote]:text-[0.95rem] [&_blockquote]:text-[var(--text-color)]/80 [&_blockquote]:rounded-r-sm
@@ -127,7 +135,7 @@
         </section>
       {/each}
 
-      {#if memoList.visibleCount < data.memos.length}
+      {#if memoList.visibleCount < memoList.filteredMemos.length}
         <div class="pt-12 text-center border-t border-[#333]/10">
           <button
             class="text-lg italic text-[#666] hover:text-[#d33682] transition-colors"

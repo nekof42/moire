@@ -39,7 +39,7 @@ body.pixel {
   --card-bg: #fffae8;
   --border-color: #a98467;
   --font-family: 'zpix', monospace;
-  -webkit-font-smoothing: none;
+  -webkit-font-smoothing: antialiased;
 }
 
 body.classic {
@@ -82,12 +82,18 @@ ul {
   margin-bottom: 0.5rem;
 }
 
+ul ul, ol ul {
+  padding-left: 1.25rem;
+}
 ol {
   list-style-type: decimal;
   padding-left: 1.25rem;
   margin-bottom: 0.5rem;
 }
 
+ol ol, ul ol {
+  padding-left: 1.5rem;
+}
 :is(ul, ol) :is(ul, ol) {
   margin-bottom: 0;
 }

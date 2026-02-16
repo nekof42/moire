@@ -1,10 +1,17 @@
 <script lang="ts">
+  import { slide } from 'svelte/transition';
   import { format } from 'date-fns';
   import type { PageData } from '../../routes/$types';
   import { createMemoList } from '$lib/memo.svelte';
 
   let { data, config }: { data: PageData; config: any } = $props();
   const memoList = createMemoList(() => data, config);
+
+  $effect(() => {
+    if (memoList.selectedTag) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
 </script>
 
 <div class="min-h-screen bg-white text-[0.95rem] {config.theme}">
@@ -31,8 +38,8 @@
     </header>
 
     <div class="divide-y divide-gray-100">
-      {#each memoList.visibleMemos as memo}
-        <article class="py-6" id={memo.slug}>
+      {#each memoList.visibleMemos as memo (memo.slug)}
+        <article class="py-6" id={memo.slug} in:slide>
           <div class="text-[0.75rem] font-400 text-gray-500 mb-2">{format(memo.date, 'MMMM d, yyyy')}</div>
           <div 
             class=" leading-[1.8] text-gray-800
@@ -77,7 +84,7 @@
       {/each}
     </div>
 
-    {#if memoList.visibleCount < data.memos.length}
+    {#if memoList.visibleCount < memoList.filteredMemos.length}
       <div class="py-6 text-center">
         <button 
           class="text-[0.8rem] text-gray-400"
@@ -90,6 +97,6 @@
   </div>
 
     <footer class="mt-16 text-center mx-9 text-[0.8rem] text-gray-400 pb-8">
-      <p>© {new Date().getFullYear()} {config.author} , synced from Apple Notes and powered by <a href="https://moire.blog/" target="_blank" class="hover:text-gray-600 transition-colors">Moire</a></p>
+      <p>© {new Date().getFullYear()} {config.author}, synced from Apple Notes and powered by <a href="https://moire.blog/" target="_blank" class="hover:text-gray-600 transition-colors">Moire</a></p>
     </footer>
 </div>

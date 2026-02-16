@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { slide } from 'svelte/transition';
   import {config} from '../../../moire.config';
   import {createMemoList} from '$lib/memo.svelte';
   import type {PageData} from '../../routes/$types';
@@ -8,6 +9,12 @@
 
   let {data}: {data: PageData} = $props();
   const memoList = createMemoList(() => data, config);
+
+  $effect(() => {
+    if (memoList.selectedTag) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
 
   let time = $state(new Date());
   let fps = $state(60);
@@ -104,8 +111,9 @@
     class="relative z-10 pt-32 pb-32 px-4 max-w-2xl mx-auto space-y-12"
     data-selected-tag={memoList.selectedTag}
   >
-    {#each memoList.visibleMemos as memo}
+    {#each memoList.visibleMemos as memo (memo.slug)}
       <article
+        in:slide
         class="group relative pl-6 border-l-2 border-[var(--text-color)]/20 hover:border-[var(--accent-color)] transition-colors duration-300"
         id={memo.slug}
       >

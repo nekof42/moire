@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { slide } from 'svelte/transition';
   import {format} from 'date-fns';
   import avatar from '$lib/assets/avatar.png';
   import type {PageData} from '../../routes/$types';
@@ -7,6 +8,12 @@
 
   let {data, config}: {data: PageData; config: any} = $props();
   const memoList = createMemoList(() => data, config);
+
+  $effect(() => {
+    if (memoList.selectedTag) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
 </script>
 
 <div class="flex justify-center sm:m-10 min-h-screen {config.theme} relative isolate">
@@ -46,14 +53,14 @@
       }}
       role="presentation"
     >
-      {#each Object.entries(memoList.groupedMemos) as [dateKey, memos]}
-        <div class="mb-[30px]">
+      {#each Object.entries(memoList.groupedMemos) as [dateKey, memos] (dateKey)}
+        <div class="mb-[30px]" in:slide>
           <div class="text-center mb-4 font-bold text-sm">
             <span>*** {format(new Date(dateKey + 'T00:00:00'), 'MMM dd, yyyy').toUpperCase()} ***</span>
           </div>
 
-          {#each memos as memo}
-            <div class="flex gap-2 mb-4 items-start -mx-1" id={memo.slug}>
+          {#each memos as memo (memo.slug)}
+            <div class="flex gap-2 mb-4 items-start -mx-1" id={memo.slug} in:slide>
               <div class="flex flex-col items-center gap-1 w-10 shrink-0 mt-4">
                 <div class="w-8 h-8 md:w-9 md:h-9 rounded-full overflow-hidden">
                   <img
@@ -69,7 +76,7 @@
                 class="flex-1 text-[0.95rem] 
                   [&_h1]:text-[1.2rem] [&_h1]:uppercase [&_h1]:font-black [&_h1]:mb-2 [&_h1]:mt-4
                   [&_h2]:text-[1.1rem] [&_h2]:uppercase [&_h2]:font-bold [&_h2]:mb-2 [&_h2]:mt-4
-                  [&_h3]:text-[1.05rem] [&_h3]:font-bold [&_h3]:mb-1.5 [&_h3]:mt-3
+                  [&_h3]:text-[1.0rem] [&_h3]:font-bold [&_h3]:mb-1.5 [&_h3]:mt-3
                   [&_h4]:text-[0.9rem] [&_h4]:font-bold [&_h4]:mb-1 [&_h4]:mt-2
                   [&_h5]:text-[0.8rem] [&_h5]:font-bold [&_h5]:italic [&_h5]:mb-1
                   [&_p]:my-4 [&_img]:grayscale [&_img]:contrast-120 [&_img]:max-w-full [&_img]:my-5 [&_img]:border-2 [&_img]:border-black
@@ -95,7 +102,7 @@
           <p class="text-center">NO DATA.</p>
       {/if}
 
-      {#if memoList.visibleCount < data.memos.length}
+      {#if memoList.visibleCount < memoList.filteredMemos.length}
         <div class="text-center my-5">
           <button
             class="bg-transparent border-2 dashed border-black px-4 py-1 text-xs cursor-pointer uppercase font-bold hover:bg-black hover:text-white transition-colors"

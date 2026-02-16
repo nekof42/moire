@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { slide } from 'svelte/transition';
   import {format} from 'date-fns';
   import {config} from '../../../moire.config';
   import {createMemoList} from '$lib/memo.svelte';
@@ -7,6 +8,12 @@
 
   let {data}: {data: PageData} = $props();
   const memoList = createMemoList(() => data, config);
+
+  $effect(() => {
+    if (memoList.selectedTag) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
 
   function handleMouseMove(e: MouseEvent) {
     const target = e.currentTarget as HTMLElement;
@@ -45,9 +52,10 @@
   </header>
 
   <div class="mx-auto grid grid-cols-1 gap-6 px-4 2xl:grid-cols-2" data-selected-tag={memoList.selectedTag}>
-    {#each memoList.visibleMemos as memo, i}
+    {#each memoList.visibleMemos as memo, i (memo.slug)}
       <div
         class="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl md:rounded-[2rem] border border-white/50 bg-white/30 p-3 md:p-7 shadow-sm backdrop-blur-3xl backdrop-saturate-150 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] animate-in fade-in slide-in-from-bottom-8 duration-700"
+        in:slide
         onmousemove={handleMouseMove}
         id={memo.slug}
         style="--x: 50%; --y: 50%; animation-delay: {(i % 15) * 100}ms; animation-fill-mode: both;"
@@ -112,7 +120,7 @@
     </div>
   {/if}
   <footer class="mt-20 text-center text-xs mx-5 tracking-wide text-slate-500 opacity-80">
-    <p>© {new Date().getFullYear()} {config.author} , synced from Apple Notes and powered by <a href="https://moire.blog/" target="_blank" class="hover:text-slate-600 transition-colors">Moire</a></p>
+    <p>© {new Date().getFullYear()} {config.author}, synced from Apple Notes and powered by <a href="https://moire.blog/" target="_blank" class="hover:text-slate-600 transition-colors">Moire</a></p>
   </footer>
 </div>
 
