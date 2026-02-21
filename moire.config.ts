@@ -1,10 +1,10 @@
 export const config = {
   title: "Moire",
-  author: "Aeris",
-  theme: "classic",
+  author: "N3kog0h4N",
+  theme: "bento",
   pageSize: 20,
   order_by: "created",
-  description: "Sync your thoughts from Apple Notes by Shortcuts.",
+  description: "I may post something there,THX for your visiting.",
   keywords: "memo, thought, sync, apple notes, shortcuts, ios",
-  url: "https://moire.blog"
+  url: "https://nekof42.github.io/moire"
 };
