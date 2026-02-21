@@ -4,7 +4,7 @@ export const config = {
   theme: "bento",
   pageSize: 20,
   order_by: "created",
-  description: "I may post something there,THX for your visiting.",
+  description: "I may post something stupid.",
   keywords: "memo, thought, sync, apple notes, shortcuts, ios",
   url: "https://nekof42.github.io/moire"
 };
