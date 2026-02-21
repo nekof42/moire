@@ -1,5 +1,5 @@
 export const config = {
-  title: "Moire",
+  title: "Blogs",
   author: "N3kog0h4N",
   theme: "bento",
   pageSize: 20,
