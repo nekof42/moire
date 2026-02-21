@@ -155,7 +155,7 @@ body.pixel input[type="checkbox"]:checked::before {
 body.bento input[type="checkbox"] {
   border-radius: 4px;
   border-color: #d1d5db;
-  background-color: white;
+  background-color: rgb(0, 0, 0);
 }
 
 body.bento input[type="checkbox"]:checked {
@@ -164,7 +164,7 @@ body.bento input[type="checkbox"]:checked {
 }
 
 body.bento input[type="checkbox"]:checked::before {
-  box-shadow: inset 1em 1em #ffffff;
+  box-shadow: inset 1em 1em #000000;
 }
 
 body.cyberpunk input[type="checkbox"] {
@@ -220,7 +220,7 @@ body.receipt input[type="checkbox"] {
   }
 
   body {
-    background: white !important;
+    background: rgb(0, 0, 0) !important;
     -webkit-font-smoothing: auto;
     margin: 0 !important;
     padding: 0 !important;
