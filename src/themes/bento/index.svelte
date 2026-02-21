@@ -127,6 +127,7 @@
 <style>
   :global(body.bento) {
     background-color: #000000;
+    color:#ffffff;
   }
 
   [data-selected-tag] :global(.tag-link) {
