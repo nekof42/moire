@@ -25,11 +25,11 @@
   }
 </script>
 
-<div class="fixed inset-0 -z-50 h-full w-full bg-[#f0f2f5]"
-     style="background-image: radial-gradient(at 0% 0%, rgba(200, 220, 255, 0.6) 0px, transparent 30%),
-      radial-gradient(at 100% 0%, rgba(242, 235, 222, 0.6) 0px, transparent 30%),
-      radial-gradient(at 100% 100%, rgba(200, 235, 240, 0.6) 0px, transparent 30%),
-      radial-gradient(at 0% 100%, rgba(215, 230, 200, 0.6) 0px, transparent 30%);">
+<div class="fixed inset-0 -z-50 h-full w-full bg-[#000000]"
+     style="background-image: radial-gradient(at 0% 0%, rgba(0, 0, 0, 0.6) 0px, transparent 30%),
+      radial-gradient(at 100% 0%, rgba(0, 0, 0, 0.6) 0px, transparent 30%),
+      radial-gradient(at 100% 100%, rgba(0, 0, 0, 0.6) 0px, transparent 30%),
+      radial-gradient(at 0% 100%, rgba(0, 0, 0, 0.6) 0px, transparent 30%);">
 </div>
 
 <div class="min-h-screen py-8 max-w-2xl mx-auto {config.theme} font-sans">
