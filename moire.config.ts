@@ -1,7 +1,7 @@
 export const config = {
   title: "Blogs",
   author: "N3kog0h4N",
-  theme: "bento",
+  theme: "classic",
   pageSize: 20,
   order_by: "created",
   description: "I may post something stupid.",
