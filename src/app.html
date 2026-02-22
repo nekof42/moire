@@ -118,13 +118,13 @@ function setPosition (clientX, clientY) {
 
 // Highlight functionality
 window.addEventListener('mouseover', (e) => {
-  if (e.target.classList.contains('highlight')) {
+  if (e.target.classList.contains('a')) {
     isHovering = true
     const rect = e.target.getBoundingClientRect()
     const style = window.getComputedStyle(e.target)
     pointerEl.style.width = rect.width + 'px'
     pointerEl.style.height = rect.height + 'px'
-    pointerEl.style.borderRadius = style.borderRadius
+    pointerEl.style.borderRadius = '15px'
     pointerEl.style.transform = `translate(${rect.left}px, ${rect.top}px)`
   }
 })
