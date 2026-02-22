@@ -57,7 +57,7 @@
     <ThemeComponent {data} {config} />
 {:else}
     <!-- Simple loading state to avoid flash -->  
-     <div class="min-h-screen flex items-center justify-center">
+     <div class="min-h-screen flex items-center justify-center bg-black">
          <span class="loader"></span>
      </div>
    
