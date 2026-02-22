@@ -214,7 +214,7 @@ body.receipt input[type="checkbox"] {
   }
 
   body {
-    background: white !important;
+    background: rgb(0, 0, 0) !important;
     -webkit-font-smoothing: auto;
     margin: 0 !important;
     padding: 0 !important;
@@ -257,4 +257,27 @@ body.receipt input[type="checkbox"] {
     animation: none !important;
     transition: none !important;
   }
+}
+
+@media (max-width: 768px) {
+
+    #pointer,
+    #cursor {
+        display: none !important;
+    }
+}
+
+#pointer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    mix-blend-mode: exclusion;
+    pointer-events: none;
+    z-index: 10000;
+    transition: width 0.2s ease, height 0.2s ease, border-radius 0.2s ease, transform 0.242s ease-out;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
