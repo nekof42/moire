@@ -13,12 +13,6 @@ body.receipt {
   --font-family: 'zpix', monospace;
 }
 
-body.cyberpunk {
-  --bg-color: #000000;
-  --text-color: #eab662;
-  --accent-color: #9bebc6;
-}
-
 body.academic {
   --bg-color: rgb(255, 252, 243);
   --text-color: #464646;
@@ -43,8 +37,8 @@ body.pixel {
 }
 
 body.classic {
-  --bg-color: #ffffff;
-  --text-color: #1d1d1f;
+  --bg-color: #000000;
+  --text-color: #ffffff;
   --accent-color: #FCB828;
 }
 
