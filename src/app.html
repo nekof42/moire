@@ -116,32 +116,6 @@ function setPosition (clientX, clientY) {
   })
 }
 
-// Highlight functionality
-window.addEventListener('mouseover', (e) => {
-  if (e.target.classList.contains('classic article a')) {
-    isHovering = true
-    const rect = e.target.getBoundingClientRect()
-    const style = window.getComputedStyle(e.target)
-    pointerEl.style.width = rect.width + 'px'
-    pointerEl.style.height = rect.height + 'px'
-    pointerEl.style.borderRadius = '15px'
-    pointerEl.style.transform = `translate(${rect.left}px, ${rect.top}px)`
-  }
-})
-
-window.addEventListener('mouseout', (e) => {
-  if (e.target.classList.contains('highlight')) {
-    isHovering = false
-    pointerEl.style.width = '42px'
-    pointerEl.style.height = '42px'
-    pointerEl.style.borderRadius = '50%'
-    // After leaving highlight, immediately position pointer at last mouse coordinates
-    if (window.innerWidth > 768) {
-      setPositionSync(lastMouseX, lastMouseY)
-    }
-  }
-})
-
 // Global mouse move, update position and record last coordinates
 htmlEl.addEventListener('mousemove', (e) => {
   lastMouseX = e.clientX
