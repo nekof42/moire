@@ -2,6 +2,7 @@ export const config = {
   title: "Blogs",
   author: "N3kog0h4N",
   theme: "classic",
+  heatmap: true,
   pageSize: 20,
   order_by: "created",
   description: "I may post something stupid.",

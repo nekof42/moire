@@ -5,6 +5,7 @@
   import type {PageData} from '../../routes/$types';
   import {createMemoList} from '$lib/memo.svelte';
   import Background from './Background.svelte';
+  import Heatmap from '$lib/components/Heatmap.svelte';
 
   let {data, config}: {data: PageData; config: any} = $props();
   const memoList = createMemoList(() => data, config);
@@ -43,6 +44,12 @@
       {/if}
     </header>
 
+    {#if config.heatmap}
+      <div class="mb-8 border-b border-dashed border-[#ccc] pb-6">
+        <Heatmap memos={data.memos} />
+      </div>
+    {/if}
+
     <div
       onclick={(e) => {
         const target = (e.target as HTMLElement).closest('button[data-tag]');
@@ -79,7 +86,7 @@
                   [&_h3]:text-[1.0rem] [&_h3]:font-bold [&_h3]:mb-1.5 [&_h3]:mt-3
                   [&_h4]:text-[0.9rem] [&_h4]:font-bold [&_h4]:mb-1 [&_h4]:mt-2
                   [&_h5]:text-[0.8rem] [&_h5]:font-bold [&_h5]:italic [&_h5]:mb-1
-                  [&_p]:my-4 [&_img]:grayscale [&_img]:contrast-120 [&_img]:max-w-full [&_img]:my-5 [&_img]:border-2 [&_img]:border-black
+                  [&_p]:my-4 [&_img]:grayscale [&_img]:contrast-120 [&_img]:max-w-full [&_img]:my-5 [&_img]:border-2 [&_img]:border-black [&_img]:transition-all [&_img]:duration-500 hover:[&_img]:grayscale-0 hover:[&_img]:border-transparent
                   [&_a]:underline [&_a]:decoration-1 [&_a]:underline-offset-2 [&_a]:hover:bg-black [&_a]:hover:text-white
                   [&_table]:w-full [&_table]:border-collapse [&_table]:my-3 [&_table]:text-xs
                   [&_th]:border-b-2 [&_th]:border-black [&_th]:border-dashed [&_th]:py-1 [&_th]:uppercase
